@@ -35,8 +35,8 @@ export default function Register() {
         { withCredentials: true } 
     );
     console.log(response.data.newUser.name);
-      // setAuthToken(response.data.token); // Save token in local storage
-      // setUserData(response.data.user); // Save user data in local storage
+      // setAuthToken(response.data.token); 
+      // setUserData(response.data.user);
     alert(`Registered Successfull${response.data.newUser.name}`)  
       router.push("/login"); // Redirect to dashboard
     } catch (error) {

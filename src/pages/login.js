@@ -18,16 +18,15 @@ export default function Login() {
 
     setLoading(true);
     try {
-    //  const response = await loginUser(formData);
     const response = await axios.post(
       "http://localhost:5000/api/login",
       { email: formData.email, password:formData.password },
       { withCredentials: true } 
   );
   console.log(response.data.userDetails.role);
-      // setAuthToken(response.data.token); // Save token in local storage
-      // setUserData(response.data.user); // Save user data in local storage
-      router.push(`/dashboard/${response.data.userDetails.role}`); // Redirect to role-based dashboard
+      // setAuthToken(response.data.token);
+      // setUserData(response.data.user); 
+      router.push(`/dashboard/${response.data.userDetails.role}`); 
     } catch (error) {
       console.error("Login Error:", error.response?.data || error.message);
       alert(error.response?.data?.message || "Login Failed. Please try again.");
