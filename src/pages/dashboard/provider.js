@@ -9,4 +9,4 @@ function ProviderDashboard() {
   );
 }
 
-export default withAuth(ProviderDashboard, ["provider"]);
+export default ProviderDashboard

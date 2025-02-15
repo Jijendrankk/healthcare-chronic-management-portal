@@ -24,7 +24,7 @@ export default function Login() {
       { email: formData.email, password:formData.password },
       { withCredentials: true } 
   );
-  console.log(response);
+  console.log(response.data.userDetails.role);
       // setAuthToken(response.data.token); // Save token in local storage
       // setUserData(response.data.user); // Save user data in local storage
       router.push(`/dashboard/${response.data.userDetails.role}`); // Redirect to role-based dashboard

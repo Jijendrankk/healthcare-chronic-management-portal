@@ -4,4 +4,4 @@ function Dashboard() {
   return <h1>Redirecting to your dashboard...</h1>;
 }
 
-export default withAuth(Dashboard);
+export default Dashboard

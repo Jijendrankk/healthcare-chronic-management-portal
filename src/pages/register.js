@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 // import { registerUser } from "../utils/api";
 // import { setAuthToken, setUserData } from "../utils/auth";
+import axios from "axios";
 import styles from "../styles/auth.module.scss";
+import { setUser } from "@/redux/slices/userSlice";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -27,15 +29,16 @@ export default function Register() {
 
     setLoading(true);
     try {
-      const response = await registerUser({
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        role:"Patient"
-      });
-      setAuthToken(response.data.token); // Save token in local storage
-      setUserData(response.data.user); // Save user data in local storage
-      router.push("/dashboard"); // Redirect to dashboard
+      const response = await axios.post(
+        "http://localhost:5000/api/register",
+        { name:formData.name,email: formData.email, password:formData.password },
+        { withCredentials: true } 
+    );
+    console.log(response.data.newUser.name);
+      // setAuthToken(response.data.token); // Save token in local storage
+      // setUserData(response.data.user); // Save user data in local storage
+    alert(`Registered Successfull${response.data.newUser.name}`)  
+      router.push("/login"); // Redirect to dashboard
     } catch (error) {
       console.error("Registration Error:", error.response?.data || error.message);
       alert(error.response?.data?.message || "Registration Failed. Please try again.");
