@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 // import { loginUser } from "../utils/api";
 // import { setAuthToken, setUserData } from "../utils/auth";
+import axios from "axios";
 import styles from "../styles/auth.module.scss";
 
 export default function Login() {
@@ -17,10 +18,16 @@ export default function Login() {
 
     setLoading(true);
     try {
-      const response = await loginUser(formData);
-      setAuthToken(response.data.token); // Save token in local storage
-      setUserData(response.data.user); // Save user data in local storage
-    //   router.push(`/dashboard/${response.data.user.role}`); // Redirect to role-based dashboard
+    //  const response = await loginUser(formData);
+    const response = await axios.post(
+      "http://localhost:5000/api/login",
+      { email: formData.email, password:formData.password },
+      { withCredentials: true } 
+  );
+  console.log(response);
+      // setAuthToken(response.data.token); // Save token in local storage
+      // setUserData(response.data.user); // Save user data in local storage
+      router.push(`/dashboard/${response.data.userDetails.role}`); // Redirect to role-based dashboard
     } catch (error) {
       console.error("Login Error:", error.response?.data || error.message);
       alert(error.response?.data?.message || "Login Failed. Please try again.");
