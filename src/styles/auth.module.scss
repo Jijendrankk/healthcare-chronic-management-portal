@@ -1,0 +1,42 @@
+// src/styles/auth.module.scss
+
+@import "variables";
+@import "mixins";
+
+.authContainer {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  text-align: center;
+  background: white;
+
+  h1 {
+    font-size: 24px;
+    color: $text-color;
+  }
+
+  input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  button {
+    width: 100%;
+    @include button($primary-color);
+    margin-top: 10px;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
