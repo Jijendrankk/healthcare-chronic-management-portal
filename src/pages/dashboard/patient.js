@@ -1,9 +1,14 @@
+import withAuth from "../../hoc/withAuth";
 
-export default function PatientDashboard() {
+function PatientDashboard() {
   return (
+
     <div>
-      <h2>Patient Dashboard</h2>
-      <p>View your appointments, health reports, and medical history.</p>
+      <h2>Welcome, Patient</h2>
+      <p>Manage your records here.</p>
     </div>
+    
   );
 }
+
+export default withAuth(PatientDashboard, ["patient"]);

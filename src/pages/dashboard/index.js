@@ -1,18 +1,7 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import withAuth from "../../hoc/withAuth";
 
-export default function Dashboard() {
-  const router = useRouter();
-  const user = useSelector((state) => state.user.data);
-
-  useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    } else {
-      router.push(`/dashboard/${user.role}`);
-    }
-  }, [user, router]);
-
-  return <p>Redirecting...</p>;
+function Dashboard() {
+  return <h1>Redirecting to your dashboard...</h1>;
 }
+
+export default withAuth(Dashboard);
