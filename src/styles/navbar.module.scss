@@ -1,0 +1,22 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #1e3a8a;
+    color: white;
+  
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+  
+      li a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  
